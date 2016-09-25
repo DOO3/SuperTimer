@@ -5,14 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SuperTimer"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="400" Background="Black" Margin="0,10">
-    <Grid>
+             d:DesignHeight="50" d:DesignWidth="400" Background="Black" Margin="0,0,0,10">
 
-        <Grid.Background>
-            <LinearGradientBrush>
-                
-            </LinearGradientBrush>
-        </Grid.Background>
+  
+
+            <Grid Name="grid">
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="Grid.Loaded">
+                <BeginStoryboard>
+                    <Storyboard AutoReverse="True" BeginTime="0" >
+                        <local:BrushAnimation Storyboard.TargetName="grid"
+                                  Storyboard.TargetProperty="Background" 
+                                  Duration="0:0:5" From="{Binding From, Mode=OneWay}" 
+                                  RepeatBehavior="Forever" AutoReverse="True" >
+                            <local:BrushAnimation.To>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="{Binding To, Mode=OneWay}" Offset="1"/>
+                                </LinearGradientBrush>
+                            </local:BrushAnimation.To>
+                        </local:BrushAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Grid.Triggers>
 
 
         <Grid.RowDefinitions>

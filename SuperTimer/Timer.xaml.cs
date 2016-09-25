@@ -20,13 +20,18 @@ namespace SuperTimer
     {
         DispatcherTimer timer = new DispatcherTimer();
         TimeSpan hms = new TimeSpan();
+        public Color From { get; set; }
+        public Color To { get; set; }
 
         public Timer(TimeSpan ts, string name, Color from, Color to)
         {
             InitializeComponent();
 
+
             lName.Content = name;
             hms = ts;
+            From = from;
+            To = to;
 
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;

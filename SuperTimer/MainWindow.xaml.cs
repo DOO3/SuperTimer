@@ -38,7 +38,12 @@ namespace SuperTimer
 
         private void AddTimer()
         {
-            wpTimes.Children.Add(new Timer(new TimeSpan(int.Parse(tbHour.Text), int.Parse(tbMinut.Text), int.Parse(tbSecond.Text)), tbName.Text));
+            wpTimes.Children.Add(new Timer(
+                new TimeSpan(int.Parse(tbHour.Text), int.Parse(tbMinut.Text), int.Parse(tbSecond.Text)), 
+                tbName.Text,
+                Colors[cbFrom.SelectedItem.ToString()],
+                Colors[cbTo.SelectedItem.ToString()]
+                ));
         }
     }
 }
